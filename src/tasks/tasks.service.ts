@@ -1,13 +1,29 @@
 import { Injectable } from '@nestjs/common';
-
+import { Task, TaskStatus } from './task.model';
+import * as uuid from 'uuid';
+import { CreateTaskDto } from './dto/create-task.dto';
+import * as firebase from 'firebase';
 @Injectable()
 export class TasksService {
 
-    private tasks = ['hello am task 2'];
+    private tasks: Task[] = [];
 
-    getAllTasks() {
+    getAllTasks(): Task[] {
         console.log('service works');
         return this.tasks;
+    }
+
+    createTask(createTaskDto: CreateTaskDto): Task {
+        const { title, description } = createTaskDto;
+        const task: Task = {
+            id: uuid(),
+            title,
+            description,
+            status: TaskStatus.OPEN,
+        };
+
+        this.tasks.push(task);
+        return task;
     }
 
 }
