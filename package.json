@@ -39,7 +39,7 @@
     "rxjs": "^6.3.3",
     "sort-objects-array": "^1.7.0",
     "swagger-ui-express": "^4.1.1",
-    "typeorm": "^0.2.18"
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
     "@nestjs/testing": "^6.0.0",
